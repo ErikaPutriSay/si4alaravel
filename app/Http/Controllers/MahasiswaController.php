@@ -43,15 +43,17 @@ class MahasiswaController extends Controller
         ]);
         // upload foto
         if ($request->hasFile('foto')) {
-            $file = $request->file('foto'); // ambil file foto
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('images'), $filename); // simpan foto ke folder public/images
-            $input['foto'] = $filename; // simpan nama file baru ke $input
+            // $file = $request->file('foto'); // ambil file foto
+            // $filename = time() . '.' . $file->getClientOriginalExtension();
+            // $file->move(public_path('images'), $filename); // simpan foto ke folder public/images
+            // $input['foto'] = $filename; // simpan nama file baru ke $input
         }
         // simpan data ke tabel mahasiswa
         Mahasiswa::create($input);
         // redirect ke route mahasiswa.index
         return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil ditambahkan.');
+
+
     }
 
     /**
